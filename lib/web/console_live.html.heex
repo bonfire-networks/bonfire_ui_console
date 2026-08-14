@@ -1,0 +1,22 @@
+<div class="p-6">
+  <%= if @session do %>
+    <.live_component module={Terminal} id="console" session={@session} />
+  <% else %>
+    <form data-role="console_token_form" phx-submit="open" class="flex flex-col gap-3">
+      <label for="console_token" class="font-medium">{l("Token")}</label>
+      <input
+        type="password"
+        id="console_token"
+        name="token"
+        autocomplete="off"
+        spellcheck="false"
+        class="input input-bordered w-full"
+      />
+      <button type="submit" class="btn btn-primary self-start">{l("Open console")}</button>
+    </form>
+
+    <%= if @refusal do %>
+      <p data-role="console_refusal" role="alert" class="mt-4 text-error">{@refusal}</p>
+    <% end %>
+  <% end %>
+</div>

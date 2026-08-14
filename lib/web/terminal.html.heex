@@ -1,0 +1,27 @@
+<div>
+  <div class="alert alert-warning mb-4" role="status">
+    {l("Each command in the session is recorded in the server logs, attributed to you.")}
+  </div>
+
+  <div data-role="console_terminal" class="rounded bg-black p-2">
+    <Underthehood.terminal id={"#{@id}-tty"} audit_label={@session} audit_level={:warning} />
+  </div>
+
+  <button
+    type="button"
+    phx-click="close"
+    phx-target={@myself}
+    data-confirm={
+      l(
+        "This ends every console session on this instance, and no new one can be opened until the app restarts. Continue?"
+      )
+    }
+    class="btn btn-sm btn-error mt-4"
+  >
+    {l("Revoke console access")}
+  </button>
+
+  <p class="text-xs opacity-70 mt-1">
+    {l("Ends all sessions instance-wide until restart. Closing this tab just ends your own.")}
+  </p>
+</div>

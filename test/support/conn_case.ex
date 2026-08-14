@@ -1,4 +1,4 @@
-defmodule Bonfire.ExtensionTemplate.ConnCase do
+defmodule Bonfire.UI.Console.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -24,9 +24,11 @@ defmodule Bonfire.ExtensionTemplate.ConnCase do
       import Phoenix.ConnTest
 
       import Bonfire.UI.Common.Testing.Helpers
-      import Phoenix.LiveViewTest
+      # PhoenixTest rather than Phoenix.LiveViewTest: Bonfire feature tests are written from the
+      # user's perspective with visit/fill_in/click_button (see the other extensions' ConnCases)
+      import PhoenixTest
 
-      # import Bonfire.ExtensionTemplate.Fake
+      # import Bonfire.UI.Console.Fake
 
       # The default endpoint for testing
       @endpoint Application.compile_env!(:bonfire, :endpoint_module)
@@ -36,7 +38,7 @@ defmodule Bonfire.ExtensionTemplate.ConnCase do
   end
 
   setup tags do
-    import Bonfire.ExtensionTemplate
+    import Bonfire.UI.Console
 
     Bonfire.Common.Test.Interactive.setup_test_repo(tags)
 

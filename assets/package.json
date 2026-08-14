@@ -1,0 +1,15 @@
+{
+	"name": "bonfire_ui_console",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"build.ext": "npx esbuild ./js/console_terminal.js --target=es2020 --bundle --format=esm --loader:.css=text --minify --drop:console --drop:debugger --outfile=../../../priv/static/assets/console_terminal.js",
+		"watch.ext": "NODE_ENV=development npx esbuild ./js/console_terminal.js --target=es2020 --bundle --format=esm --loader:.css=text --sourcemap --outfile=../../../priv/static/assets/console_terminal.js --watch"
+	},
+	"dependencies": {
+		"@xterm/xterm": "^5.5.0"
+	},
+	"devDependencies": {
+		"esbuild": "^0.19.9"
+	}
+}
