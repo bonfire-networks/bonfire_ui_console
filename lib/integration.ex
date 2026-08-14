@@ -1,4 +1,4 @@
-defmodule Bonfire.ExtensionTemplate do
+defmodule Bonfire.UI.Console do
   @moduledoc "./README.md" |> File.stream!() |> Enum.drop(1) |> Enum.join()
 
   use Bonfire.Common.Config
@@ -8,12 +8,9 @@ defmodule Bonfire.ExtensionTemplate do
   alias Bonfire.Common.Utils
 
   declare_extension(
-    l("Bonfire.ExtensionTemplate"),
-    icon: "bi:app",
-    description: l("An awesome extension")
-    # default_nav: [
-    #   Bonfire.ExtensionTemplate.Web.HomeLive
-    # ]
+    l("Console"),
+    icon: "bi:terminal",
+    description: l("A time-limited web IEx console for admins")
   )
 
   def repo, do: Config.repo()

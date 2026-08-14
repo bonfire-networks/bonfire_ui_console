@@ -1,6 +1,6 @@
 Code.eval_file("mess.exs", (if File.exists?("../../lib/mix/mess.exs"), do: "../../lib/mix/"))
 
-defmodule Bonfire.ExtensionTemplate.MixProject do
+defmodule Bonfire.UI.Console.MixProject do
   use Mix.Project
 
   def project do
@@ -16,21 +16,21 @@ defmodule Bonfire.ExtensionTemplate.MixProject do
     end
     ++
     [
-      app: :bonfire_extension_template,
+      app: :bonfire_ui_console,
       version: "0.0.1",
       elixir: "~> 1.10",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: Mix.compilers() ++ [:surface],
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      description: "An extension for Bonfire",
+      description: "A time-limited web IEx console for Bonfire admins",
         homepage_url: "https://bonfirenetworks.org/",
-        source_url: "https://github.com/bonfire-networks/bonfire_extension_template",
+        source_url: "https://github.com/bonfire-networks/bonfire_ui_console",
         package: [
           licenses: ["AGPL-3.0"],
           links: %{
-            "Repository" => "https://github.com/bonfire-networks/bonfire_extension_template",
-            "Hexdocs" => "https://hexdocs.pm/bonfire_extension_template"
+            "Repository" => "https://github.com/bonfire-networks/bonfire_ui_console",
+            "Hexdocs" => "https://hexdocs.pm/bonfire_ui_console"
           }
         ],
         docs: [
