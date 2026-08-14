@@ -9,8 +9,9 @@ defmodule Bonfire.UI.Console.ConsoleLive do
 
   use Bonfire.UI.Common.Web, :live_view
 
-  on_mount({LivePlugs,
-            [Bonfire.UI.Me.LivePlugs.LoadCurrentUser, Bonfire.UI.Me.LivePlugs.AdminRequired]})
+  on_mount(
+    {LivePlugs, [Bonfire.UI.Me.LivePlugs.LoadCurrentUser, Bonfire.UI.Me.LivePlugs.AdminRequired]}
+  )
 
   alias Bonfire.UI.Console.Terminal
 

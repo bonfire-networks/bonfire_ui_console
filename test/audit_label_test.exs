@@ -1,5 +1,4 @@
 defmodule Bonfire.UI.Console.AuditLabelTest do
-
   use Bonfire.UI.Console.ConnCase, async: false
 
   import ExUnit.CaptureLog
