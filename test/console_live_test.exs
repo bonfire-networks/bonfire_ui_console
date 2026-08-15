@@ -49,7 +49,9 @@ defmodule Bonfire.UI.Console.ConsoleLiveTest do
       |> fill_in("Token", with: token)
       |> click_button("Open console")
       |> wait_async()
-      |> assert_has("[data-role=console_terminal]")
+      # the bundle URL is rendered here rather than on the hook element, which belongs to the
+      # underthehood dep, so the shim looks it up on the nearest ancestor carrying it
+      |> assert_has("[data-role=console_terminal][data-terminal-bundle]")
     end
 
     # asserting each case gives the SAME message, not merely that each is "an error" — a test that

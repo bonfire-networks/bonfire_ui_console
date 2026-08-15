@@ -3,7 +3,13 @@
     {l("Each command in the session is recorded in the server logs, attributed to you.")}
   </div>
 
-  <div data-role="console_terminal" class="rounded bg-black p-2">
+  <div
+    data-role="console_terminal"
+    data-terminal-bundle={
+      Bonfire.Common.URIs.versioned_static_path("/assets/console_terminal.js")
+    }
+    class="rounded bg-black p-2"
+  >
     <Underthehood.terminal id={"#{@id}-tty"} audit_label={@session} audit_level={:warning} />
   </div>
 

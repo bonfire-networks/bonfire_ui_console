@@ -31,8 +31,12 @@ export const TerminalHooks = {
     },
 
     async load() {
+      // the hook element belongs to underthehood, so the digested URL is rendered on our own
+      // wrapper instead; the bare path is the last resort, and is what prod served before the
+      // attribute existed — uncached-busted, since it never goes through the digest manifest
       const url =
         this.el.dataset.terminalBundle ||
+        this.el.closest("[data-terminal-bundle]")?.dataset.terminalBundle ||
         new URL("/assets/console_terminal.js", window.location.origin).href;
 
       try {
