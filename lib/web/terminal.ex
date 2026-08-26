@@ -21,8 +21,8 @@ defmodule Bonfire.UI.Console.Terminal do
     if Gate.authorised?(token) do
       label = audit_label(current_user, client_ip)
 
-      # `notice`, not `info`: opening a root shell is the audit trail's whole point, and it has to survive the log level being turned down. Both prod (quiet by default) and CI (`TEST_LOG_LEVEL=notice`) sit above `info`, so this was being recorded nowhere that matters.
-      Logger.notice("console opened by #{label}")
+      # `warning`, not `info`: opening a root shell is the audit trail's whole point, so it has to survive the log level being turned down. Prod defaults to `warning` and CI runs at `notice`, both above `info`, so this was being recorded nowhere that matters. Matches the level the per-command transcript already uses
+      Logger.warning("console opened by #{label}")
       {:ok, label}
     else
       :error
@@ -39,7 +39,7 @@ defmodule Bonfire.UI.Console.Terminal do
   end
 
   def handle_event("close", _params, socket) do
-    Logger.notice("console access revoked by #{e(assigns(socket), :session, nil)}")
+    Logger.warning("console access revoked by #{e(assigns(socket), :session, nil)}")
 
     # navigate away first, so the purge has no live session left to kill mid-render
     PurgeWorker.purge_when_gone(self())
