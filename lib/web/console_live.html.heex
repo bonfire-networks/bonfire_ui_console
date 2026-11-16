@@ -1,6 +1,12 @@
 <div class="p-6">
   <%= if @session do %>
-    <.live_component module={Terminal} id="console" session={@session} />
+    <%!-- a plain HEEx component call does not carry the Surface context, so the user is passed for the event guard, which refuses an event from a component with no current user --%>
+    <.live_component
+      module={Terminal}
+      id="console"
+      session={@session}
+      current_user={current_user(assigns)}
+    />
   <% else %>
     <form data-role="console_token_form" phx-submit="open" class="flex flex-col gap-3">
       <label for="console_token" class="font-medium">{l("Token")}</label>
